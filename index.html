@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>💰 Finance</h2>
+        <nav>
+            <a href="#" class="active">📊 Dashboard</a>
+            <a href="#transactions">💳 Transactions</a>
+            <a href="#addTransaction">➕ Add Transaction</a>
+        </nav>
+        <button id="darkModeBtn">🌙 Dark Mode</button>
+    </aside>
+    <main class="main">
+        <header>
+            <div>
+                <h1>Personal Finance Dashboard</h1>
+                <p>Track your income, expenses and balance</p>
+            </div>
+            <div class="date" id="currentDate"></div>
+        </header>
+        <section class="cards">
+            <div class="card balance-card">
+                <div>
+                    <p>Total Balance</p>
+                    <h2 id="balance">₹0</h2>
+                </div>
+                <span>💰</span>
+            </div>
+            <div class="card income-card">
+                <div>
+                    <p>Total Income</p>
+                    <h2 id="income">₹0</h2>
+                </div>
+                <span>📈</span>
+            </div>
+            <div class="card expense-card">
+                <div>
+                    <p>Total Expenses</p>
+                    <h2 id="expense">₹0</h2>
+                </div>
+                <span>📉</span>
+            </div>
+
+        </section>
+        <section class="dashboard-grid">
+            <div class="panel" id="addTransaction">
+                <h2>Add Transaction</h2>
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input
+                            type="text"
+                            id="description"
+                            placeholder="e.g. Grocery shopping"
+                            required
+                        >
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input
+                                type="number"
+                                id="amount"
+                                placeholder="Enter amount"
+                                min="1"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+
+                            <select id="type">
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="category">
+                                <option value="Salary">Salary</option>
+                                <option value="Food">Food</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Health">Health</option>
+                                <option value="Education">Education</option>
+                                <option value="Other">Other</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input
+                                type="date"
+                                id="date"
+                                required
+                            >
+                        </div>
+                    </div>
+                    <button type="submit" class="add-btn">
+                        Add Transaction
+                    </button>
+                </form>
+            </div>
+            <div class="panel chart-panel">
+                <h2>Expense Breakdown</h2>
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Transactions -->
+        <section class="panel transactions-panel" id="transactions">
+
+            <div class="transaction-header">
+
+                <div>
+                    <h2>Recent Transactions</h2>
+                    <p>Your latest income and expenses</p>
+                </div>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="🔍 Search transactions..."
+                >
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="transactionList">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
